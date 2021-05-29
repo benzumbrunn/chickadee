@@ -6,6 +6,6 @@ const jellyfishConfig: any = config.get('jellyfish');
 
 describe('telegram', async () => {
   it('send reward message to self', async () => {
-    await sendRewardMessage();
+    await sendRewardMessage('testnode', 1);
   });
 });
