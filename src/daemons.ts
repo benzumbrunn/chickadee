@@ -18,7 +18,7 @@ const fetchNodeRewardsDaemon = () => {
         };
       }
     }));
-  }, 3000);
+  }, 5 * 60 * 1000);
 }
 
 export default initDaemons;
