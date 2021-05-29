@@ -1,15 +1,5 @@
-import sqlite3 from 'sqlite3';
 import Knex from 'knex';
 import jellyfish from '../jellyfish';
-
-const filename = process.env.NODE_ENV === 'test' ? ':memory:' : 'chickadee.db'
-
-const db = new sqlite3.Database(filename, err => {
-  if (err) {
-    return console.error(err.message);
-  }
-  console.log(`Connected to ${filename} SQlite database.`);
-});
 
 const knex = Knex({
   client: 'sqlite',
@@ -45,7 +35,7 @@ const initNodes = async () => {
   const miningInfo = await jellyfish.mining.getMiningInfo();
   miningInfo.masternodes.forEach(async node => {
     if (!(await knex.select(['masternode_id']).from('nodes')) && node.masternodeid && node.masternodeoperator) {
-      addNode(node.masternodeid, node.masternodeoperator);
+      await addNode(node.masternodeid, node.masternodeoperator);
     }
   });
 }
