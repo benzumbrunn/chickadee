@@ -11,8 +11,7 @@ const knex = Knex({
 const init = async () => {
   if (!(await knex.schema.hasTable('nodes'))) {
     await knex.schema.createTable('nodes', (table) => {
-      table.increments();
-      table.string('masternode_id');
+      table.string('masternode_id').primary();
       table.string('masternode_operator');
       table.dateTime('created_at');
     });
@@ -33,11 +32,16 @@ const addNode = async (masternodeId: string, masternodeOperator: string) => {
 
 const initNodes = async () => {
   const miningInfo = await jellyfish.mining.getMiningInfo();
-  miningInfo.masternodes.forEach(async node => {
-    if (!(await knex.select(['masternode_id']).from('nodes')) && node.masternodeid && node.masternodeoperator) {
+
+  await Promise.all(miningInfo.masternodes.map(async node => {
+    console.log(node);
+    console.log(await knex.select(['masternode_id']).from('nodes'));
+    if ((await knex.select(['masternode_id']).from('nodes')).length === 0 && node.masternodeid && node.masternodeoperator) {
       await addNode(node.masternodeid, node.masternodeoperator);
+      console.log(`Created node ${node.masternodeid}`);
     }
-  });
+  }));
+
 }
 
 const getAllNodes = async () => {
