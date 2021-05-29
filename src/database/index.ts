@@ -34,14 +34,11 @@ const initNodes = async () => {
   const miningInfo = await jellyfish.mining.getMiningInfo();
 
   await Promise.all(miningInfo.masternodes.map(async node => {
-    console.log(node);
-    console.log(await knex.select(['masternode_id']).from('nodes'));
     if ((await knex.select(['masternode_id']).from('nodes')).length === 0 && node.masternodeid && node.masternodeoperator) {
       await addNode(node.masternodeid, node.masternodeoperator);
       console.log(`Created node ${node.masternodeid}`);
     }
   }));
-
 }
 
 const getAllNodes = async () => {
