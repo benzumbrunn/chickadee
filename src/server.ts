@@ -5,12 +5,10 @@ import initRoutes from './routes';
 
 const server = fastify()
 
-const init = async () => {
+export const init = async () => {
   await database.init();
   await database.initNodes();
   await initRoutes(server);
 }
-
-init();
 
 export default server;
