@@ -1,0 +1,16 @@
+<mjml>
+  <mj-include path="./components/head.mjml" />
+  <mj-body>
+    <mj-include path="./components/banner.mjml" />
+    <mj-section>
+      <mj-column>
+        <mj-text mj-class="standard-text">Hello {{name}}!</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="#eeeeee">
+      <mj-column>
+        <mj-text mj-class="standard-text">A longer paragraph. Some test here.</mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

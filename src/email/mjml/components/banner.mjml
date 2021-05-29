@@ -1,0 +1,6 @@
+<mj-section background-color="#222222">
+  <mj-column>
+    <mj-text font-size="50px" color="#eeeeee" font-family="Courgette">Chickadee</mj-text>
+    <mj-divider border-color="#D4B390"></mj-divider>
+  </mj-column>
+</mj-section>
