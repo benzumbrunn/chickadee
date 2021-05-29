@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import * as database from '../src/database';
 
-describe.only('database', async () => {
+describe('database', async () => {
   it('basic tests', async () => {
     await database.init();
     await database.addNode('testId', 'testOperator');
