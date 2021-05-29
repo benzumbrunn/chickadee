@@ -5,10 +5,8 @@ const telegramConfig: any = config.get('telegram');
 
 const telegramBot = new TelegramBot(telegramConfig.botToken);
 
-export const sendRewardMessage = async () => {
-  if (process.env.NODE_ENV === 'test') {
-    await telegramBot.sendMessage(telegramConfig.developerChatId, 'test message from bot');
-  }
+export const sendRewardMessage = async (masternodeId: string, numberOfBlocks: number) => {
+  await telegramBot.sendMessage(telegramConfig.developerChatId, `New reward minted for ${masternodeId}, reward no. ${numberOfBlocks}`);
 }
 
 telegramBot.on('message', (msg) => {
