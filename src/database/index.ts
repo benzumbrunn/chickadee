@@ -57,10 +57,11 @@ const getAllNodes = async () => {
 
 const isNewRewardForNode = async (masternodeId: string, currentMintedBlocks: number) => {
   console.log(currentMintedBlocks);
-  const mintedBlocks = await knex.select(['mintedblocks']).from('nodes').where('masternode_id', masternodeId);
-  console.log(mintedBlocks[0]);
+  const mintedBlocksObject = await knex.select(['mintedblocks']).from('nodes').where('masternode_id', masternodeId);
+  const mintedBlocks = mintedBlocksObject[0].mintedBlocks;
+  console.log(mintedBlocks);
 
-  if (currentMintedBlocks > mintedBlocks[0]) {
+  if (currentMintedBlocks > mintedBlocks) {
     return true;
   }
   return false;
