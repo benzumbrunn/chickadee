@@ -68,9 +68,11 @@ const isNewRewardForNode = async (masternodeId: string, currentMintedBlocks: num
 }
 
 const updateMintedBlocks = async (masternodeId: string, currentMintedBlocks: number) => {
-  await knex('nodes').update([{
-    mintedblocks: currentMintedBlocks,
-  }]).where('masternode_id', masternodeId);
+  await knex('nodes')
+    .update({
+      mintedblocks: currentMintedBlocks,
+    })
+    .where('masternode_id', masternodeId);
 }
 
 export {
