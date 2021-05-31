@@ -1,5 +1,6 @@
 import { isNewRewardForNode, updateMintedBlocks } from "./database";
 import jellyfish from "./jellyfish";
+import logger from "./logger";
 import { sendRewardMessage } from "./telegram/telegramBot";
 
 const initDaemons = () => {
@@ -8,7 +9,7 @@ const initDaemons = () => {
 
 const fetchNodeRewardsDaemon = () => {
   setInterval(async () => {
-    console.log('running updateNodeRewardDaemon');
+    logger.info('running updateNodeRewardDaemon');
     const miningInfo = await jellyfish.mining.getMiningInfo();
     await Promise.all(miningInfo.masternodes.map(async node => {
       if (node.masternodeid && node.mintedblocks) {
