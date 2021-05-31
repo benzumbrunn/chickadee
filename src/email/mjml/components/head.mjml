@@ -1,8 +1,0 @@
-<mj-head>
-  <mj-attributes>
-    <mj-class name="standard-text" font-size="16px" color="#222222" font-family="Inconsolata" />
-    <mj-all font-family="Inconsolata" />
-  </mj-attributes>
-  <mj-font name="Courgette" href="https://fonts.googleapis.com/css?family=Courgette" />
-  <mj-font name="Inconsolata" href="https://fonts.googleapis.com/css?family=Inconsolata" />
-</mj-head>

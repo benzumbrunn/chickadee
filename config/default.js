@@ -1,7 +1,13 @@
 module.exports = {
-  email: {
-    host: "smtp.ethereal.email",
-    port: 587,
-    // auth: {user, pass} --> for local.js
-  }
+  /* local.js content:
+  jellyfish: {
+    rpcuser: '...',
+    rpcpassword: '...',
+    port: 8555,
+  },
+  telegram: {
+    botToken: '...',
+    developerChatId: '...',
+  },
+  */
 }
