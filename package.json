@@ -1,24 +1,33 @@
 {
   "name": "chickadee",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "start": "npm run build && node dist/index.js",
-    "dev": "nodemon",
+    "start": "NODE_ENV=production npm run build && node dist/index.js",
+    "dev": "NODE_ENV=development nodemon",
     "test": "NODE_ENV=test mocha -r ts-node/register tests/**/*.test.ts",
     "coverage": "nyc mocha -r ts-node/register tests/**/*.test.ts --timeout=3000"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "defichain",
+    "monitoring",
+    "masternode"
+  ],
+  "author": {
+    "name": "Ben Zumbrunn",
+    "email": "benzumbrunn@gmail.com",
+    "url": "https://github.com/benzumbrunn"
+  },
   "license": "ISC",
   "dependencies": {
     "@defichain/jellyfish": "^0.10.1",
     "config": "^3.3.6",
     "knex": "^0.95.6",
     "node-telegram-bot-api": "^0.53.0",
-    "sqlite3": "5.0.0"
+    "sqlite3": "5.0.0",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "@types/chai": "^4.2.17",

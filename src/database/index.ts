@@ -1,5 +1,6 @@
 import Knex from 'knex';
 import jellyfish from '../jellyfish';
+import logger from '../logger';
 
 const knex = Knex({
   client: 'sqlite',
@@ -19,7 +20,7 @@ const init = async () => {
       });
     }
   } catch (err) {
-    console.error('Failed to initialize database', err);
+    logger.error('Failed to initialize database', err);
   }
 }
 
@@ -43,11 +44,11 @@ const initNodes = async () => {
     await Promise.all(miningInfo.masternodes.map(async node => {
       if ((await knex.select(['masternode_id']).from('nodes')).length === 0 && node.masternodeid && node.masternodeoperator) {
         await addNode(node.masternodeid, node.masternodeoperator);
-        console.log(`Created node ${node.masternodeid}`);
+        logger.info(`Created node ${node.masternodeid}`);
       }
     }));
   } catch (err) {
-    console.error('Failed to initialize nodes in database', err);
+    logger.error('Failed to initialize nodes in database', err);
   }
 }
 
