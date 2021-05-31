@@ -2,5 +2,4 @@ dist/
 node_modules/
 .nyc_output/
 config/local.js
-.secret
 chickadee.db
