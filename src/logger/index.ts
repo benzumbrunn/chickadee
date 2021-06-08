@@ -1,8 +1,13 @@
-import winston from 'winston';
+import winston, { format } from 'winston';
 
 const logger = winston.createLogger({
   level: 'info',
-  format: winston.format.json(),
+  format: format.combine(
+    format.timestamp({
+      format: 'YYYY-MM-DD HH:mm:ss'
+    }),
+    format.json(),
+  ),
   defaultMeta: { service: 'chickadee' },
   transports: [
     new winston.transports.File({ filename: 'logs/error.log', level: 'error', maxsize: 10000000 }),
