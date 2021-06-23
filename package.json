@@ -22,7 +22,7 @@
   },
   "license": "ISC",
   "dependencies": {
-    "@defichain/jellyfish": "^0.13.0",
+    "@defichain/jellyfish": "^0.18.0",
     "config": "^3.3.6",
     "knex": "^0.95.6",
     "node-telegram-bot-api": "^0.53.0",
